@@ -15,3 +15,7 @@
 - `self.cord_x,self.cord_y,self.cord_z` = depth of centroid of object from rover after appyling correction
 - `g` - object of class WheelRPM ROS msg to set velocity 
 - `goal_coord` - numpy array of `self.cord_x1, self.cord_y1, self.cord_z1`
+- `msg.data[1],msg.data[2],msg.data[0]` - z,y,x coordinates offset taking poisition of zed2i camera into effect
+- `d` - distance of centroid from rover using depth coordinates
+- `kp` - propprtionality constant
+
