@@ -19,3 +19,11 @@
 - `d` - distance of centroid from rover using depth coordinates
 - `kp` - propprtionality constant
 
+---
+
+## Publishers and Subscribers
+
+---
+
+## Class Methods:
+- 
