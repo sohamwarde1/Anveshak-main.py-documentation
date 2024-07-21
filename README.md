@@ -39,6 +39,9 @@ This script is used to detect a red goal cylinder and send the coordinates to th
 * `self.image_sub`: Subscribes to zed2i node giving colour image data.
 * `self.depth_sub`: Subscribes to zed2i nodes giving depth data.
 
+### Publisher and Subscriber Graph
+![Screenshot 2024-07-21 at 4 42 40 PM](https://github.com/user-attachments/assets/0be47b78-f647-4929-8bd0-241c61600ad9)
+
 ---
 
 ## Class Methods:
@@ -49,7 +52,7 @@ This script is used to detect a red goal cylinder and send the coordinates to th
 * `show_coordinates`: applies a correction formula using the intrinsic paramters of the camera on `self.depth` to get the exact x,y,z coordinates of the centroid of the object from rover
 * `callback` callback function for rectified image from zed2i camera. It bridges the data to cv2 through `self.cv_image`.
 * `tube_frame`: unused function.
-* `mask_red`: function to detect centroid of red object. It converts the image to hsv and detects contous in the upper and lower hsv values of red used. It also Binarizes the image obtained. It then uses cv.moments to find the centroid of each object with non zero area and adds them to a list. It however returns only the last value of the centroid found. It also draws a circle and the countours although the image is never displayed.
+* `mask_red`: function to detect centroid of red object. It converts the image to hsv and detects contous in the upper and lower hsv values of red used. It also Binarizes the image obtained. It then uses **cv.moments** to find the centroid of each object with non zero area and adds them to a list. It however returns only the last value of the centroid found. It also draws a circle and the countours although the image is never displayed.
 
 ---
 
@@ -63,8 +66,11 @@ This script is used to detect a red goal cylinder and send the coordinates to th
 6. Based on the z coodinate(obtained from msg), `g` gets a certain velocity. The z coordinate points to the depth or the distance between the camera and the cylinder. Based on how far the camera is from the cylinder, `g` is given different velocities. Once the z coordinate is small enough `self.goal_reached` is set to `True`.
 7. Similarly, based on how far left or right the centre of the cylinder is(obtained from the x coordinate of the centre of the cylinder) `g` is given a certain angular velocity. When the centre of the cylinder is directly in front of the camera `self.goal_reached_angular` is set to `True`.
 8. `g` is published to `self.velocity_pub` to control wheel motion. If the x and z coordinates are non-zero, then `msg` array is published to `self.vel_pub` and `True` is published to `self.bool_pub`.
+   
+The below flowchart demonstrates the motion of rover based on goal coordinates.
+![Flowchart_angular(1)](https://github.com/user-attachments/assets/e8061274-9170-47af-8762-3119019148fb)
 
----
 
-## Publisher and Subscriber Graph
-<img width="629" alt="Screenshot 2024-07-21 at 4 42 40 PM" src="https://github.com/user-attachments/assets/0be47b78-f647-4929-8bd0-241c61600ad9">
+
+
+
