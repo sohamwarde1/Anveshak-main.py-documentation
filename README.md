@@ -63,3 +63,8 @@ This script is used to detect a red goal cylinder and send the coordinates to th
 6. Based on the z coodinate(obtained from msg), `g` gets a certain velocity. The z coordinate points to the depth or the distance between the camera and the cylinder. Based on how far the camera is from the cylinder, `g` is given different velocities. Once the z coordinate is small enough `self.goal_reached` is set to `True`.
 7. Similarly, based on how far left or right the centre of the cylinder is(obtained from the x coordinate of the centre of the cylinder) `g` is given a certain angular velocity. When the centre of the cylinder is directly in front of the camera `self.goal_reached_angular` is set to `True`.
 8. `g` is published to `self.velocity_pub` to control wheel motion. If the x and z coordinates are non-zero, then `msg` array is published to `self.vel_pub` and `True` is published to `self.bool_pub`.
+
+---
+
+## Publisher and Subscriber Graph
+<img width="629" alt="Screenshot 2024-07-21 at 4 42 40 PM" src="https://github.com/user-attachments/assets/0be47b78-f647-4929-8bd0-241c61600ad9">
