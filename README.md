@@ -48,7 +48,7 @@ This script is used to detect a red goal cylinder and send the coordinates to th
   depth of the coordintaes `self.p_x,self.p_y`(centroid detected by `mask_red` function).
 * `show_coordinates`: applies a correction formula using the intrinsic paramters of the camera on `self.depth` to get the exact x,y,z coordinates of the centroid of the object from rover
 * `callback` callback function for rectified image from zed2i camera. It bridges the data to cv2 through `self.cv_image`.
-* `tube_frame`: unused functionBased on the z coodinate(obtained from msg), `g` gets a certain velocity. The z coordinate points to the depth or the distance between the camera and the cylinder. Based on how far the camera is from the cylinder, `g` is given different velocities. Once the z coordinate is small enough `self.goal_reached` is set to `True`.
+* `tube_frame`: unused function.
 * `mask_red`: function to detect centroid of red object. It converts the image to hsv and detects contous in the upper and lower hsv values of red used. It also Binarizes the image obtained. It then uses cv.moments to find the centroid of each object with non zero area and adds them to a list. It however returns only the last value of the centroid found. It also draws a circle and the countours although the image is never displayed.
 
 ---
